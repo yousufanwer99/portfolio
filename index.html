@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yousuf Khan — Senior .NET Engineer</title>
+  <meta name="description"
+    content="Yousuf Khan — Senior .NET Engineer specializing in financial data platforms. .NET, Angular, SQL Server.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.44.0/iconfont/tabler-icons.min.css">
+  <style>
+    :root {
+      --bg: #FAFAF9;
+      --surface: #FFFFFF;
+      --surface-2: #F4F3F1;
+      --border: #E7E5E1;
+      --text: #171412;
+      --text-2: #6B6560;
+      --text-3: #9A948D;
+      --accent-1: #833AB4;
+      --accent-2: #E1306C;
+      --accent-3: #F77737;
+      --grad: linear-gradient(115deg, var(--accent-1) 0%, var(--accent-2) 55%, var(--accent-3) 100%);
+      --shadow: 0 1px 2px rgba(23, 20, 18, 0.04), 0 8px 24px rgba(23, 20, 18, 0.04);
+      --radius: 14px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #0C0B0A;
+      --surface: #151312;
+      --surface-2: #1D1A18;
+      --border: #2B2724;
+      --text: #F5F2EE;
+      --text-2: #ABA49C;
+      --text-3: #726C65;
+      --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      transition: background .25s ease, color .25s ease;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      margin: 0;
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+
+    img,
+    svg {
+      max-width: 100%;
+    }
+
+    .grad-text {
+      background: var(--grad);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    ::selection {
+      background: var(--accent-2);
+      color: #fff;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: 2px;
+    }
+
+    /* nav */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg) 82%, transparent);
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    nav.wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 12px;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .logo .dot {
+      color: var(--accent-2);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      min-width: 0;
+    }
+
+    .nav-links::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links a {
+      font-size: 13.5px;
+      color: var(--text-2);
+      transition: color .15s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle {
+      width: 42px;
+      height: 24px;
+      border-radius: 20px;
+      border: 0.5px solid var(--border);
+      background: var(--surface-2);
+      position: relative;
+      cursor: pointer;
+      padding: 0;
+      flex-shrink: 0;
+      margin-left: 4px;
+    }
+
+    .theme-toggle .knob {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--grad);
+      transition: left .2s ease;
+    }
+
+    [data-theme="dark"] .theme-toggle .knob {
+      left: 20px;
+    }
+
+    @media (max-width:640px) {
+      .nav-links {
+        gap: 16px;
+      }
+
+      .nav-links a {
+        font-size: 12.5px;
+      }
+    }
+
+    @media (max-width:420px) {
+      .logo {
+        font-size: 14px;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+    }
+
+    /* hero */
+    .hero {
+      padding: clamp(48px, 10vw, 88px) 0 clamp(40px, 8vw, 64px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--text-2);
+      padding: 5px 12px;
+      border: 0.5px solid var(--border);
+      border-radius: 20px;
+      margin-bottom: 24px;
+      max-width: 100%;
+    }
+
+    .eyebrow .pulse {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #3FB950;
+      box-shadow: 0 0 0 3px rgba(63, 185, 80, 0.18);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 8vw, 44px);
+      font-weight: 600;
+      line-height: 1.12;
+      margin-bottom: 14px;
+      word-break: break-word;
+    }
+
+    .hero .role {
+      font-size: clamp(15px, 3.6vw, 19px);
+      color: var(--text-2);
+      margin-bottom: 22px;
+      line-height: 1.5;
+    }
+
+    .hero .role strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero p.lede {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--text-2);
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      padding: 11px 18px;
+      border-radius: 10px;
+      cursor: pointer;
+      border: 0.5px solid transparent;
+      transition: transform .15s ease, opacity .15s ease;
+      white-space: nowrap;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-primary {
+      background: var(--grad);
+      color: #fff;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    /* section shared */
+    section {
+      padding: 56px 0;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .section-num {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-2);
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 600;
+    }
+
+    /* about */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-2);
+      margin: 0 0 16px;
+    }
+
+    .about-text strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .fact-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 24px;
+    }
+
+    .fact {
+      background: var(--surface);
+      padding: 16px 18px;
+      min-width: 0;
+    }
+
+    .fact .label {
+      font-size: 11px;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .fact .value {
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 500;
+      word-break: break-word;
+    }
+
+    @media (max-width:420px) {
+      .fact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* experience timeline */
+    .timeline {
+      position: relative;
+    }
+
+    .tl-item {
+      position: relative;
+      padding-left: 28px;
+      padding-bottom: 32px;
+      border-left: 1px solid var(--border);
+    }
+
+    .tl-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 4px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--grad);
+    }
+
+    .tl-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .tl-role {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .tl-period {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      color: var(--text-3);
+      white-space: nowrap;
+    }
+
+    .tl-org {
+      font-size: 13.5px;
+      color: var(--accent-2);
+      margin-bottom: 10px;
+    }
+
+    .tl-bullets {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .tl-bullets li {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: 6px;
+    }
+
+    .tl-bullets li::marker {
+      color: var(--text-3);
+    }
+
+    .tl-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      font-size: 11.5px;
+      font-family: 'IBM Plex Mono', monospace;
+      color: var(--text-2);
+      background: var(--surface-2);
+      border: 0.5px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    /* project card */
+    .project-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--grad);
+    }
+
+    .project-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .project-title {
+      font-size: 19px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .project-sub {
+      font-size: 13px;
+      color: var(--text-3);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 8px;
+    }
+
+    .icon-link {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      color: var(--text-2);
+      border: 0.5px solid var(--border);
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: border-color .15s, color .15s;
+    }
+
+    .project-desc {
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--text-2);
+      margin: 16px 0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+
+    .feature {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .feature i {
+      font-size: 16px;
+      color: var(--accent-2);
+      margin-top: 2px;
+      flex-shrink: 0;
+    }
+
+    .feature-text .t {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .feature-text .d {
+      font-size: 12.5px;
+      color: var(--text-3);
+      line-height: 1.5;
+    }
+
+    @media (max-width:600px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .collapsible-trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--accent-2);
+      cursor: pointer;
+      margin-top: 6px;
+      background: none;
+      border: none;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    .collapsible-trigger i {
+      font-size: 14px;
+      transition: transform .2s ease;
+    }
+
+    .collapsible-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+
+    .collapsible-body-inner {
+      padding-top: 14px;
+      border-top: 0.5px solid var(--border);
+      margin-top: 14px;
+    }
+
+    .collapsible-body-inner p {
+      font-size: 13.5px;
+      line-height: 1.7;
+      color: var(--text-2);
+      margin: 0 0 10px;
+    }
+
+    .collapsible-body-inner p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* other work grid */
+    /* client project cards */
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .proj-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 14px;
+    }
+
+    .proj-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .proj-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+    }
+
+    .proj-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .proj-badge {
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--surface-2);
+      color: var(--text-2);
+      border: 0.5px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .proj-desc {
+      font-size: 13.5px;
+      color: var(--text-2);
+      line-height: 1.7;
+      margin: 0 0 12px;
+    }
+
+    .proj-bullets {
+      margin: 0 0 14px;
+      padding-left: 18px;
+    }
+
+    .proj-bullets li {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.7;
+      margin-bottom: 4px;
+    }
+
+    .proj-bullets li::marker {
+      color: var(--text-3);
+    }
+
+    .work-card .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .work-card .tags .tag {
+      font-size: 10.5px;
+    }
+
+    .subsection-label {
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0 0 16px;
+    }
+
+    .work-card {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      transition: border-color .15s;
+    }
+
+    .work-card .t {
+      font-size: 14.5px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .work-card .d {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    @media (max-width:600px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* skills */
+    .skill-cats {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .skill-cat .cat-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--text-3);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+    }
+
+    .skill-cat .cat-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--grad);
+      flex-shrink: 0;
+    }
+
+    .skill-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill {
+      font-size: 13px;
+      padding: 7px 14px;
+      border-radius: 20px;
+      border: 0.5px solid var(--border);
+      color: var(--text-2);
+      background: var(--surface);
+      transition: all .15s;
+    }
+
+
+    /* contact */
+    .contact-box {
+      background: var(--surface);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      font-size: 14.5px;
+      color: var(--text-2);
+      margin-bottom: 24px;
+      max-width: 420px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 32px 0 48px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12.5px;
+      color: var(--text-3);
+    }
+
+    @media (max-width:600px) {
+      .wrap {
+        padding: 0 18px;
+      }
+
+      section {
+        padding: 40px 0;
+      }
+
+      .section-title {
+        font-size: 19px;
+      }
+
+      .project-card {
+        padding: 20px;
+      }
+
+      .contact-box {
+        padding: 26px 20px;
+      }
+
+      .contact-box h2 {
+        font-size: 20px;
+      }
+
+      .btn-row .btn {
+        flex: 1 1 auto;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width:380px) {
+      .btn-row {
+        flex-direction: column;
+      }
+
+      .btn-row .btn {
+        width: 100%;
+      }
+    }
+
+    /* hover effects only for mouse/trackpad — prevents highlights sticking after a tap on touch devices */
+    @media (hover:hover) and (pointer:fine) {
+      .nav-links a:hover {
+        color: var(--text);
+      }
+
+      .btn-primary:hover {
+        opacity: 0.92;
+      }
+
+      .btn-ghost:hover {
+        background: var(--surface-2);
+      }
+
+      .icon-link:hover {
+        border-color: var(--accent-2);
+        color: var(--accent-2);
+      }
+
+      .work-card:hover {
+        border-color: var(--accent-2);
+      }
+
+      .pill:hover {
+        border-color: transparent;
+        background: var(--grad);
+        color: #fff;
+      }
+    }
+
+    /* consistent rhythm between stacked sections */
+    section+section {
+      margin-top: 0;
+    }
+
+    .section-head {
+      margin-bottom: 28px;
+    }
+
+    .skill-cat:last-child {
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <nav class="wrap">
+      <div class="logo">yousuf<span class="dot">.</span>khan</div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        <button class="theme-toggle icon-link" id="theme-toggle" aria-label="Toggle light and dark theme"
+          style="display:flex; padding:0;">
+          <span class="knob"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" style="border-top:none;">
+      <div class="eyebrow"><span class="pulse"></span> Open to full-time & freelance roles</div>
+      <h1>Yousuf Khan</h1>
+      <p class="role">Full Stack <strong>.NET Developer</strong> — from requirements to production</p>
+      <p class="lede">5+ years shipping production systems in C#, .NET Core, Angular and SQL Server. Currently leading a
+        small dev team at Logicose, owning projects end-to-end — architecture, APIs, and delivery.</p>
+      <div class="btn-row">
+        <a href="resume.pdf" download class="btn btn-primary" target="_blank"><i class="ti ti-download"></i> Download
+          resume</a>
+        <a href="#work" class="btn btn-ghost"><i class="ti ti-code"></i> View projects</a>
+        <a href="#contact" class="btn btn-ghost"><i class="ti ti-mail"></i> Get in touch</a>
+      </div>
+    </section>
+
+    <section class="wrap" id="about">
+      <div class="section-head"><span class="section-num">01</span>
+        <h2 class="section-title">About</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a <strong>Full Stack .NET Developer</strong> based in Karachi, currently an Associate Manager at
+            Logicose, where I lead a two-person developer team and own client projects end-to-end — requirements,
+            architecture, database design, and production delivery. I've shipped systems handling sensitive financial
+            data for hundreds of active users, AI-assisted content platforms, and payment-integrated products.</p>
+          <p>Outside client work, I build things solo: <strong>FeedLens</strong>, a full-stack video platform with a
+            transparent recommendation engine, and a browser-based developer tool for tracing data sources across a
+            codebase. I like owning a problem from database to UI, and I'm equally comfortable in ASP.NET MVC, .NET Core
+            APIs, and modern Angular.</p>
+          <div class="fact-grid">
+            <div class="fact">
+              <div class="label">Location</div>
+              <div class="value">Karachi, Pakistan</div>
+            </div>
+            <div class="fact">
+              <div class="label">Experience</div>
+              <div class="value">5+ years</div>
+            </div>
+            <div class="fact">
+              <div class="label">Focus</div>
+              <div class="value">.NET · Angular · SQL</div>
+            </div>
+            <div class="fact">
+              <div class="label">Availability</div>
+              <div class="value">Full-time & freelance</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <section class="wrap" id="experience">
+      <div class="section-head"><span class="section-num">02</span>
+        <h2 class="section-title">Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-head">
+            <div class="tl-role">Senior .NET Engineer</div>
+            <div class="tl-period mono">2021 — Present</div>
+          </div>
+          <div class="tl-org">Danat / Argaam — ArgaamPlus Platform</div>
+          <ul class="tl-bullets">
+            <li>Own feature development across both public portal and admin sides of a financial data platform serving
+              live market data, company financials and analytics.</li>
+            <li>Designed and shipped full-stack features end-to-end — from stored procedure to REST API to responsive UI
+              — including a fund-holding data widget with bilingual (Arabic/English) support.</li>
+            <li>Diagnosed and fixed complex, multi-view rendering bugs affecting financial figure display across reports
+              and Excel exports, restoring data accuracy for high-visibility company profile pages.</li>
+            <li>Led an incremental migration from server-rendered partial views to AJAX-driven async loading, improving
+              page responsiveness across the platform.</li>
+            <li>Designed a stored-procedure-driven sync architecture to keep financial reference data consistent across
+              dependent tables and screens.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tag">C# / ASP.NET MVC</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">PetaPoco</span>
+            <span class="tag">Highcharts</span>
+            <span class="tag">EPPlus</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-head">
+            <div class="tl-role">Associate Manager, Full Stack Developer</div>
+            <div class="tl-period mono">02/2022 — 05/2025</div>
+          </div>
+          <div class="tl-org">Logicose — Karachi, Pakistan</div>
+          <ul class="tl-bullets">
+            <li>Joined as a junior developer and progressed to leading a two-person developer team, taking ownership of
+              projects end-to-end.</li>
+            <li>Manage full project lifecycle from client requirement gathering through architecture, development and
+              production deployment.</li>
+            <li>Design database schemas and base backend architecture for new applications before development begins.
+            </li>
+            <li>Build APIs with complex business logic to support and unblock the wider team.</li>
+            <li>Respond directly to client queries on CMS-based platforms and translate feedback into feature
+              requirements.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tag">.NET Core</span>
+            <span class="tag">Angular</span>
+            <span class="tag">SQL Server</span>
+            <span class="tag">Team leadership</span>
+            <span class="tag">Architecture</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-head">
+            <div class="tl-role">Junior Executive, Full Stack Developer</div>
+            <div class="tl-period mono">03/2021 — 10/2021</div>
+          </div>
+          <div class="tl-org">Dream Beyond — Karachi, Pakistan</div>
+          <ul class="tl-bullets">
+            <li>Worked under a team lead building .NET Core APIs, Angular applications, and MVC-based projects.</li>
+            <li>Contributed across the stack — backend endpoints, Angular UI work, and classic MVC applications.</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tag">.NET Core</span>
+            <span class="tag">Angular</span>
+            <span class="tag">ASP.NET MVC</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-head">
+            <div class="tl-role">Lab Engineer</div>
+            <div class="tl-period mono">01/2021 — 03/2021</div>
+          </div>
+          <div class="tl-org">Aptech — Karachi, Pakistan</div>
+          <ul class="tl-bullets">
+            <li>Instructed a class of 30 students across three sessions a day on HTML, CSS and JavaScript, .NET Core and
+              Angular, and Office Automation (Word, PowerPoint, Excel).</li>
+          </ul>
+          <div class="tl-tags">
+            <span class="tag">Teaching</span>
+            <span class="tag">.NET Core</span>
+            <span class="tag">Angular</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <section class="wrap" id="work">
+      <div class="section-head"><span class="section-num">03</span>
+        <h2 class="section-title">Featured project</h2>
+      </div>
+
+      <div class="project-card">
+        <div class="project-head">
+          <div>
+            <div class="project-title">FeedLens</div>
+            <div class="project-sub">Full-stack video platform with a transparent recommendation engine</div>
+          </div>
+          <!-- <div class="project-links">
+            <a href="#" class="icon-link"><i class="ti ti-external-link"></i> Live demo</a>
+            <a href="#" class="icon-link"><i class="ti ti-brand-github"></i> Source</a>
+          </div> -->
+        </div>
+        <p class="project-desc">A video-sharing platform built to solve a real frustration with black-box recommendation
+          algorithms — every viewer can see and choose which ranking mode is shaping their feed. Built solo, end-to-end,
+          across three services.</p>
+
+        <div class="feature-grid">
+          <div class="feature"><i class="ti ti-server-2"></i>
+            <div class="feature-text">
+              <div class="t">.NET 8 API</div>
+              <div class="d">Core backend, auth and data layer</div>
+            </div>
+          </div>
+          <div class="feature"><i class="ti ti-brand-angular"></i>
+            <div class="feature-text">
+              <div class="t">Angular 19</div>
+              <div class="d">Frontend client application</div>
+            </div>
+          </div>
+          <div class="feature"><i class="ti ti-brain"></i>
+            <div class="feature-text">
+              <div class="t">Python / FastAPI</div>
+              <div class="d">ML microservice for feed ranking</div>
+            </div>
+          </div>
+          <div class="feature"><i class="ti ti-cloud"></i>
+            <div class="feature-text">
+              <div class="t">AWS S3 + Redis</div>
+              <div class="d">Video storage and caching layer</div>
+            </div>
+          </div>
+        </div>
+
+        <button class="collapsible-trigger" id="proj-trigger">Show architecture & feature details <i
+            class="ti ti-chevron-down" id="proj-chev"></i></button>
+        <div class="collapsible-body" id="proj-body">
+          <div class="collapsible-body-inner">
+            <p><strong style="color:var(--text);">Auth & security:</strong> JWT-based authentication with secure,
+              presigned upload URLs direct to S3 — no video traffic passes through the API server.</p>
+            <p><strong style="color:var(--text);">Recommendation engine:</strong> Five distinct algorithm modes (Focal,
+              Prism, Spectrum, Flare, Drift), each surfaced transparently in the UI so users understand why a video was
+              recommended.</p>
+            <p><strong style="color:var(--text);">Deployment:</strong> Distributed across Railway (API), Vercel
+              (frontend), Azure SQL (data) and AWS S3 (media) — a deliberate multi-cloud setup to demonstrate deployment
+              flexibility.</p>
+            <p><strong style="color:var(--text);">Roadmap:</strong> Azure Cognitive Search for discovery, Azure Service
+              Bus for async processing, and AWS Lambda for on-upload thumbnail generation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <section class="wrap">
+      <div class="section-head"><span class="section-num">04</span>
+        <h2 class="section-title">Client projects</h2>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title-row">
+          <div class="proj-title">Investments-based application</div>
+          <span class="proj-badge">300+ active users</span>
+        </div>
+        <p class="proj-desc">Handles highly sensitive financial data — currently supports nearly 300 active users and
+          manages investments totaling millions of dollars, built with a security-first approach throughout.</p>
+        <ul class="proj-bullets">
+          <li>Gathered requirements from the sales team and designed the application's architecture and database.</li>
+          <li>Integrated APIs with the Angular frontend and exposed endpoints for the mobile app team.</li>
+          <li>Implemented Twilio for OTP verification and SMTP for email notifications.</li>
+          <li>Collaborated with a two-person developer team through the build.</li>
+        </ul>
+        <div class="tl-tags">
+          <span class="tag">.NET Core</span><span class="tag">Angular</span><span class="tag">SQL</span><span
+            class="tag">Twilio</span><span class="tag">Clean architecture</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title-row">
+          <div class="proj-title">Blog-based application</div>
+          <span class="proj-badge">AI-powered feed</span>
+        </div>
+        <p class="proj-desc">A multi-role blogging platform where admins publish content and users get a personalized
+          feed, recommended from their likes, views and browsing history.</p>
+        <ul class="proj-bullets">
+          <li>Designed the architecture and database, and built the recommendation logic behind the feed.</li>
+          <li>Integrated APIs with the Angular application and supplied endpoints to the mobile app team.</li>
+          <li>Owned development independently, through to deployment on a live environment.</li>
+        </ul>
+        <div class="tl-tags">
+          <span class="tag">.NET Core</span><span class="tag">Angular</span><span class="tag">SQL</span><span
+            class="tag">N-layered architecture</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title-row">
+          <div class="proj-title">Watch ads & earn</div>
+          <span class="proj-badge">Payments</span>
+        </div>
+        <p class="proj-desc">Lets users register and earn money watching short ads, with per-ad payout rates and payment
+          settings fully configurable from an admin panel.</p>
+        <ul class="proj-bullets">
+          <li>Integrated Stripe and PayPal to manage payout transactions.</li>
+          <li>Used Twilio for OTP verification and the Mandrill API for email notifications.</li>
+          <li>Provided APIs to the mobile app team and coordinated delivery with a two-person dev team.</li>
+        </ul>
+        <div class="tl-tags">
+          <span class="tag">.NET Core</span><span class="tag">Angular</span><span class="tag">SQL</span><span
+            class="tag">Stripe</span><span class="tag">PayPal</span><span class="tag">Clean architecture</span>
+        </div>
+      </div>
+    </section>
+    <br>
+    <section class="wrap">
+      <div class="section-head"><span class="section-num">05</span>
+        <h2 class="section-title">Academic & practice projects</h2>
+      </div>
+      <div class="work-grid">
+        <div class="work-card">
+          <div class="t">Virtual examination — final year project</div>
+          <div class="d">Multi-role exam platform for teachers and students supporting MCQs, true/false and
+            detailed-answer questions, with automatic grading of written answers using the Word2Vec algorithm.</div>
+          <div class="tags">
+            <span class="tag">.NET Core</span><span class="tag">Python / FastAPI</span><span class="tag">Word2Vec</span>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="t">SourceLens</div>
+          <div class="d">A browser-extension concept for developers — traces which stored procedures and queries power
+            any element on screen, cutting debugging time on large legacy codebases.</div>
+        </div>
+        <div class="work-card">
+          <div class="t">CV Builder</div>
+          <div class="d">A single-file, browser-based resume editor with live preview, theme switching and print-to-PDF
+            — built to speed up tailoring applications per role.</div>
+        </div>
+        <div class="work-card">
+          <div class="t">Chat room — semester project</div>
+          <div class="d">Real-time chat app supporting group rooms and one-on-one conversations, with admin moderation
+            and full chat history saved to the database.</div>
+          <div class="tags"><span class="tag">.NET Core</span><span class="tag">MVC</span><span class="tag">SQL</span>
+          </div>
+        </div>
+        <div class="work-card">
+          <div class="t">Tic-tac-toe — semester project</div>
+          <div class="d">A console game where the computer opponent plays using the minimax algorithm for its move
+            selection.</div>
+          <div class="tags"><span class="tag">.NET</span><span class="tag">Minimax</span></div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <section class="wrap" id="skills">
+      <div class="section-head"><span class="section-num">06</span>
+        <h2 class="section-title">Skills</h2>
+      </div>
+      <div class="skill-cats">
+        <div class="skill-cat">
+          <div class="cat-label">Backend</div>
+          <div class="skill-pills">
+            <span class="pill">C#</span>
+            <span class="pill">ASP.NET MVC</span>
+            <span class="pill">ASP.NET Core</span>
+            <span class="pill">REST APIs</span>
+            <span class="pill">PetaPoco</span>
+            <span class="pill">Clean architecture</span>
+            <span class="pill">N-layered architecture</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="cat-label">Frontend</div>
+          <div class="skill-pills">
+            <span class="pill">Angular</span>
+            <span class="pill">JavaScript</span>
+            <span class="pill">Highcharts</span>
+            <span class="pill">HTML / CSS</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="cat-label">Integrations</div>
+          <div class="skill-pills">
+            <span class="pill">Stripe</span>
+            <span class="pill">PayPal</span>
+            <span class="pill">Twilio</span>
+            <span class="pill">SMTP / Mandrill</span>
+            <span class="pill">Python / FastAPI</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="cat-label">Data & infra</div>
+          <div class="skill-pills">
+            <span class="pill">SQL Server</span>
+            <span class="pill">EPPlus</span>
+            <span class="pill">AWS S3</span>
+            <span class="pill">Azure</span>
+            <span class="pill">Redis</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <br>
+    <section class="wrap" id="contact" style="padding-bottom:64px;">
+      <div class="contact-box">
+        <h2 class="grad-text">Let's work together</h2>
+        <p>Open to senior .NET / full-stack roles and select freelance engagements. Comfortable
+          working with remote and international teams.</p>
+        <div class="contact-links">
+          <a href="mailto:yousufanwer99@gmail.com" class="btn btn-primary"><i class="ti ti-mail"></i>
+            Email me</a>
+          <a href="https://www.linkedin.com/in/yousufanwer99/" class="btn btn-ghost" target="_blank"><i
+              class="ti ti-brand-linkedin"></i> LinkedIn</a>
+          <a href="https://github.com/YousufAnwer99" class="btn btn-ghost" target="_blank"><i
+              class="ti ti-brand-github"></i> GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Designed & built by Yousuf Khan · <span id="year"></span></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    var toggle = document.getElementById('theme-toggle');
+    var root = document.documentElement;
+    var saved = null;
+    try { saved = localStorage.getItem('pf-theme'); } catch (e) { }
+    if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      root.setAttribute('data-theme', 'dark');
+    }
+    toggle.addEventListener('click', function () {
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      if (isDark) {
+        root.removeAttribute('data-theme');
+        try { localStorage.setItem('pf-theme', 'light'); } catch (e) { }
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        try { localStorage.setItem('pf-theme', 'dark'); } catch (e) { }
+      }
+    });
+
+    var trigger = document.getElementById('proj-trigger');
+    var body = document.getElementById('proj-body');
+    var chev = document.getElementById('proj-chev');
+    trigger.addEventListener('click', function () {
+      var open = body.style.maxHeight && body.style.maxHeight !== '0px';
+      if (open) {
+        body.style.maxHeight = '0px';
+        chev.style.transform = 'rotate(0deg)';
+      } else {
+        body.style.maxHeight = body.scrollHeight + 'px';
+        chev.style.transform = 'rotate(180deg)';
+      }
+    });
+  </script>
+
+</body>
+
+</html>
