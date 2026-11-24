@@ -45,7 +45,7 @@
       <p class="lede">5+ years shipping production systems in C#, .NET Core, Angular and SQL Server. Currently leading a
         small dev team at Logicose, owning projects end-to-end — architecture, APIs, and delivery.</p>
       <div class="btn-row">
-        <a href="resume.pdf" download class="btn btn-primary" target="_blank"><i class="ti ti-download"></i> Download
+        <a href="yousuf-dotnet-fullstack.docx" download class="btn btn-primary" target="_blank"><i class="ti ti-download"></i> Download
           resume</a>
         <a href="#work" class="btn btn-ghost"><i class="ti ti-code"></i> View projects</a>
         <a href="#contact" class="btn btn-ghost"><i class="ti ti-mail"></i> Get in touch</a>
@@ -302,6 +302,66 @@
         <div class="tl-tags">
           <span class="tag">.NET Core</span><span class="tag">Angular</span><span class="tag">SQL</span><span
             class="tag">Stripe</span><span class="tag">PayPal</span><span class="tag">Clean architecture</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title-row">
+          <div class="proj-title">Legacy Web Forms to .NET Core migration</div>
+          <span class="proj-badge">Modernization</span>
+        </div>
+        <p class="proj-desc">Migrated a legacy ASP.NET Web Forms application to a modern ASP.NET Core platform on
+          .NET 8.0, restructured into a layered, maintainable architecture.</p>
+        <ul class="proj-bullets">
+          <li>Replaced code-behind, ViewState and postback-driven logic with clean RESTful Web APIs and reusable
+            service layers, applying S.O.L.I.D principles and dependency injection.</li>
+          <li>Modernized data access with Entity Framework Core and optimized MSSQL queries.</li>
+          <li>Preserved existing business behavior and database integrity throughout a phased rollout.</li>
+        </ul>
+        <div class="tl-tags">
+          <span class="tag">.NET 8.0</span><span class="tag">ASP.NET Core</span><span class="tag">Web Forms</span><span
+            class="tag">EF Core</span><span class="tag">MSSQL</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title-row">
+          <div class="proj-title">BlackVault — attendance & payroll SaaS</div>
+          <span class="proj-badge">Multi-tenant</span>
+        </div>
+        <p class="proj-desc">A multi-tenant SaaS for small businesses in Karachi — one SQL database isolating every
+          company's data by CompanyId, with role-based access (Owner, Admin, Manager, Employee).</p>
+        <ul class="proj-bullets">
+          <li>Layered architecture (MVC, Services, Repository, Helpers) with dependency injection and Dapper over
+            stored procedures.</li>
+          <li>Configurable shifts, late-arrival rules, self-service attendance and manager overrides feeding automated
+            payroll.</li>
+          <li>Groq LLM API integrated backend-only (key never exposed to the client) for an HR assistant and
+            plain-language payslip explanations; payroll stays in C# and sensitive data is kept out of prompts.</li>
+          <li>Built exclusively with Claude (AI-assisted development) — from architecture and schema design to
+            implementation.</li>
+        </ul>
+        <div class="tl-tags">
+          <span class="tag">ASP.NET Core MVC</span><span class="tag">Dapper</span><span class="tag">Azure SQL</span><span
+            class="tag">RBAC</span><span class="tag">Groq LLM</span>
+        </div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-title-row">
+          <div class="proj-title">Social media platform</div>
+          <span class="proj-badge">Recommendations</span>
+        </div>
+        <p class="proj-desc">A social platform with rich multimedia feeds and an interest-based recommendation engine.
+        </p>
+        <ul class="proj-bullets">
+          <li>Suggested relevant posts from user interaction history and engagement telemetry.</li>
+          <li>Built photo/video feeds with share, like, report, and follow/unfollow features.</li>
+          <li>Tuned database execution plans to support high-volume, concurrent read/write queries.</li>
+        </ul>
+        <div class="tl-tags">
+          <span class="tag">.NET Core</span><span class="tag">Angular</span><span class="tag">SQL</span><span
+            class="tag">Stripe</span>
         </div>
       </div>
     </section>
